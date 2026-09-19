@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equinox Mental Health | Portsmouth, NH Counseling</title>
+<meta name="description" content="Equinox Mental Health — compassionate, client-centered counseling with Lucia Savage-Reeder, M.A., LCMHC, MLADC, in Portsmouth, New Hampshire.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+  /* ============================
+     TOKENS
+     ============================ */
+  :root{
+    --ink:        #1A1B17;   /* near-black, warm-cool */
+    --ink-soft:   #2C2E27;
+    --paper:      #F6F4ED;   /* soft warm white */
+    --paper-dim:  #EDEADF;
+    --purple:     #5B4B78;   /* twilight */
+    --purple-deep:#453A5D;
+    --green:      #4B6A4F;   /* meadow */
+    --blue:       #3D6478;   /* horizon */
+    --line:       rgba(26,27,23,0.14);
+    --line-on-ink:rgba(246,244,237,0.16);
+
+    --serif: "Fraunces", Georgia, serif;
+    --sans:  "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --measure: 62ch;
+    --edge: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family: var(--serif);
+    font-weight: 440;
+    line-height: 1.08;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  p{ margin: 0 0 1em; }
+  a{ color: inherit; }
+
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--ink); color:var(--paper); padding:0.75em 1.25em;
+    z-index:100; border-radius:2px;
+  }
+  .skip-link:focus{ left: 1rem; top: 1rem; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+  }
+
+  /* ============================
+     EQUINOX RULE — recurring divider motif
+     ============================ */
+  .equinox-rule{
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--purple) 0%, var(--blue) 55%, var(--green) 100%);
+    opacity: 0.85;
+    border: none;
+    margin: 0;
+  }
+  .equinox-rule.on-ink{ opacity: 0.6; }
+
+  /* ============================
+     HEADER
+     ============================ */
+  header.site{
+    position: sticky; top:0; z-index: 40;
+    background: rgba(246,244,237,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, background .3s ease;
+  }
+  header.site.scrolled{ border-bottom-color: var(--line); }
+
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.1rem var(--edge);
+  }
+  .brand{
+    font-family: var(--serif); font-size: 1.25rem; font-weight: 500;
+    text-decoration:none; color: var(--ink);
+    display:flex; align-items:baseline; gap:0.5rem;
+  }
+  .brand .mark{ font-style: italic; color: var(--purple); font-weight: 440; }
+
+  .nav-links{
+    display:flex; align-items:center; gap: 2rem;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none; font-size: 0.95rem; color: var(--ink-soft);
+    padding: 0.25rem 0; border-bottom: 1px solid transparent;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .nav-links a:hover{ border-color: var(--purple); color: var(--ink); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:0.6em;
+    font-family: var(--sans); font-weight: 600; font-size: 0.95rem;
+    text-decoration:none; cursor:pointer;
+    padding: 0.75em 1.4em;
+    border-radius: 3px;
+    border: 1px solid var(--ink);
+    background: var(--ink); color: var(--paper);
+    transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn:hover{ background: var(--purple-deep); border-color: var(--purple-deep); }
+  .btn:active{ transform: translateY(1px); }
+  .btn.ghost{
+    background: transparent; color: var(--ink); border-color: var(--line);
+  }
+  .btn.ghost:hover{ border-color: var(--ink); background: transparent; }
+  .btn.on-ink{ background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .btn.on-ink:hover{ background: var(--paper-dim); }
+  .btn.ghost.on-ink{ background: transparent; color: var(--paper); border-color: var(--line-on-ink); }
+  .btn.ghost.on-ink:hover{ border-color: var(--paper); }
+
+  .nav-cta{ display:flex; align-items:center; gap:1.5rem; }
+  .menu-toggle{ display:none; }
+
+  /* ============================
+     HERO
+     ============================ */
+  .hero{
+    padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items:center;
+  }
+  .hero-copy .eyebrow{
+    font-family: var(--sans); font-size: 0.95rem; color: var(--green);
+    margin: 0 0 1.1em;
+  }
+  .hero-copy h1{
+    font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+    max-width: 15ch;
+  }
+  .hero-copy .lede{
+    margin-top: 1.4em;
+    max-width: 42ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top: 2.1em;
+    display:flex; flex-wrap:wrap; gap: 1rem;
+  }
+
+  .hero-graphic{
+    aspect-ratio: 1 / 1;
+    max-width: 420px;
+    margin-left: auto;
+    position: relative;
+  }
+  .hero-graphic svg{ width:100%; height:100%; display:block; }
+  .hero-graphic .sun,
+  .hero-graphic .moon{
+    transform-origin: center;
+    animation: settle 1.4s cubic-bezier(.22,1,.36,1) both;
+  }
+  .hero-graphic .moon{ animation-delay: .12s; }
+  @keyframes settle{
+    from{ opacity:0; transform: translateY(10px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ============================
+     IMAGE PLACEHOLDER (swap for <img> later)
+     ============================ */
+  .img-slot{
+    background: var(--paper-dim);
+    border: 1px dashed var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    text-align:center;
+    padding: 1rem;
+    border-radius: 3px;
+    overflow:hidden;
+  }
+  .img-slot img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* ============================
+     SECTION SCAFFOLDING
+     ============================ */
+  section{ padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .section-head{ max-width: var(--measure); margin-bottom: 2.4rem; }
+  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); }
+  .section-head p{ margin-top: 0.9em; color: var(--ink-soft); }
+
+  /* ---- About: alternating two-column ---- */
+  .about .wrap{
+    display:grid; grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items:center;
+  }
+  .about .img-slot{ aspect-ratio: 4/5; }
+  .about-body p{ max-width: var(--measure); color: var(--ink-soft); }
+  .about-body .credentials{
+    margin-top: 1.6em;
+    padding-top: 1.4em;
+    border-top: 1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap: 0.5rem 1.5rem;
+    font-size: 0.92rem; color: var(--ink-soft);
+  }
+  .about-body .credentials span{ white-space:nowrap; }
+
+  /* ---- Areas of focus: plain divided list, not a card grid ---- */
+  .focus-list{ list-style:none; margin:0; padding:0; max-width: 900px; }
+  .focus-list li{
+    display:grid; grid-template-columns: 15rem 1fr;
+    gap: 1.5rem 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .focus-list li:last-child{ border-bottom: 1px solid var(--line); }
+  .focus-list h3{ font-size: 1.15rem; font-weight: 440; }
+  .focus-list .desc{ color: var(--ink-soft); max-width: 52ch; }
+
+  /* ---- Approach: narrow single column ---- */
+  .approach .wrap{ max-width: var(--measure); }
+  .approach p{ color: var(--ink-soft); }
+  .approach p:first-of-type{ color: var(--ink); font-size: 1.08rem; }
+
+  /* ---- Pull quote ---- */
+  .quote{
+    padding: clamp(3rem, 7vw, 5rem) 0;
+    background: var(--paper-dim);
+  }
+  .quote blockquote{
+    margin:0; max-width: 720px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 440;
+    font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+    line-height: 1.35;
+    color: var(--purple-deep);
+  }
+  .quote cite{ display:block; margin-top: 1.2rem; font-style:normal; font-family: var(--sans); font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* ============================
+     CONTACT / BOOK — night side
+     ============================ */
+  .contact{ background: var(--ink); color: var(--paper); }
+  .contact .section-head p{ color: rgba(246,244,237,0.72); }
+  .contact .wrap{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .info-list{ list-style:none; margin: 0; padding:0; }
+  .info-list li{
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line-on-ink);
+    display:grid; grid-template-columns: 7.5rem 1fr; gap:1rem;
+  }
+  .info-list li:last-child{ border-bottom: 1px solid var(--line-on-ink); }
+  .info-list .label{ color: rgba(246,244,237,0.55); font-size: 0.9rem; }
+  .info-list a{ text-decoration: underline; text-decoration-color: rgba(246,244,237,0.35); text-underline-offset: 3px; }
+  .info-list a:hover{ text-decoration-color: var(--paper); }
+
+  .hours-table{ width:100%; border-collapse: collapse; font-size: 0.96rem; }
+  .hours-table td{ padding: 0.15rem 0; }
+  .hours-table td:last-child{ text-align:right; color: rgba(246,244,237,0.75); }
+
+  form.book{ display:flex; flex-direction:column; gap: 1.3rem; }
+  .field{ display:flex; flex-direction:column; gap: 0.4rem; }
+  .field label{ font-size: 0.88rem; color: rgba(246,244,237,0.7); }
+  .field input, .field select, .field textarea{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-on-ink);
+    color: var(--paper);
+    font-family: var(--sans); font-size: 1rem;
+    padding: 0.55em 0.1em;
+    resize: vertical;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color: rgba(246,244,237,0.35); }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-bottom-color: var(--paper); outline:none; }
+  .form-note{ font-size: 0.85rem; color: rgba(246,244,237,0.55); margin-top: -0.4rem; }
+
+  /* ============================
+     FOOTER
+     ============================ */
+  footer.site{ padding: 2.5rem 0; }
+  footer.site .wrap{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;
+  }
+  footer.site .foot-brand{ font-family: var(--serif); font-size:1.05rem; }
+  footer.site .foot-links{ display:flex; gap:1.5rem; list-style:none; padding:0; margin:0; font-size:0.9rem; }
+  footer.site .foot-links a{ text-decoration:none; color: var(--ink-soft); }
+  footer.site .foot-links a:hover{ color: var(--ink); }
+  footer.site small{ display:block; margin-top:1.5rem; color: var(--ink-soft); font-size:0.8rem; }
+
+  /* ============================
+     RESPONSIVE
+     ============================ */
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero-graphic{ max-width: 280px; margin: 0 auto; order:-1; }
+    .about .wrap{ grid-template-columns: 1fr; }
+    .about .img-slot{ aspect-ratio: 16/10; }
+    .contact .wrap{ grid-template-columns: 1fr; }
+    .focus-list li{ grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+
+  @media (max-width: 720px){
+    .nav-links{
+      position: fixed; inset: 0 0 0 30%;
+      background: var(--paper);
+      flex-direction: column; align-items:flex-start;
+      justify-content:center; gap: 1.8rem;
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      border-left: 1px solid var(--line);
+    }
+    .nav-links.open{ transform: translateX(0); }
+    .nav-links a{ font-size: 1.15rem; }
+    .menu-toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      width: 2.4rem; height:2.4rem;
+      background:none; border: 1px solid var(--line); border-radius:3px;
+      cursor:pointer; z-index: 60; position:relative;
+    }
+    .menu-toggle span, .menu-toggle::before, .menu-toggle::after{
+      content:""; position:absolute; width: 1.1rem; height:1px; background: var(--ink);
+    }
+    .menu-toggle::before{ transform: translateY(-5px); }
+    .menu-toggle::after{ transform: translateY(5px); }
+    .nav-cta .btn.ghost{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site" id="siteHeader">
+  <nav class="nav wrap">
+    <a class="brand" href="#top">Equinox <span class="mark">Mental Health</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Areas of Focus</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn ghost" href="#contact">Contact</a>
+      <a class="btn" href="#contact">Book an appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Counseling in Portsmouth, New Hampshire</p>
+        <h1>Some seasons ask more of us than others.</h1>
+        <p class="lede">Equinox Mental Health is the practice of Lucia Savage-Reeder, M.A. — twenty years of compassionate, client-centered counseling for anxiety, depression, grief, relationship strain, and substance use, using a Cognitive Behavioral approach built around you.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Book an appointment</a>
+          <a class="btn ghost" href="#focus">Areas of focus</a>
+        </div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="skyLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#5B4B78"/>
+              <stop offset="55%" stop-color="#3D6478"/>
+              <stop offset="100%" stop-color="#4B6A4F"/>
+            </linearGradient>
+          </defs>
+          <line x1="20" y1="230" x2="380" y2="230" stroke="url(#skyLine)" stroke-width="2"/>
+          <circle class="sun" cx="150" cy="230" r="62" fill="none" stroke="#5B4B78" stroke-width="1.4"/>
+          <circle class="sun" cx="150" cy="230" r="46" fill="#5B4B78" opacity="0.14"/>
+          <circle class="moon" cx="260" cy="230" r="34" fill="none" stroke="#4B6A4F" stroke-width="1.4"/>
+          <circle class="moon" cx="260" cy="230" r="34" fill="#4B6A4F" opacity="0.12"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="equinox-rule">
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="img-slot">
+        <!-- IMAGE: portrait of Lucia Savage-Reeder — replace this div's content with <img src="..." alt="Lucia Savage-Reeder"> -->
+        Photo of Lucia Savage-Reeder
+      </div>
+      <div class="about-body">
+        <div class="section-head">
+          <h2>Twenty years of steady, human care.</h2>
+        </div>
+        <p>Lucia opened Equinox Mental Health in 2026 after two decades of counseling work in residential, community-based, and outpatient settings. She works with individuals age fourteen and up, meeting each person where they are and helping them move, at their own pace, toward the change they're already reaching for.</p>
+        <p>Her approach is client-centered and grounded in Cognitive Behavioral Therapy — practical, collaborative, and paced to fit the person in front of her rather than a script.</p>
+        <div class="credentials">
+          <span>M.A., Counseling Psychology — Antioch University New England, 2006</span>
+          <span>B.A., Psychology — Colby-Sawyer College, 2002</span>
+          <span>Licensed Clinical Mental Health Counselor, NH</span>
+          <span>Master Licensed Alcohol &amp; Drug Counselor, NH</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="equinox-rule">
+
+  <!-- ============ AREAS OF FOCUS ============ -->
+  <section id="focus">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Areas of focus</h2>
+        <p>Every person arrives with a different weight to set down. These are the places Lucia most often works alongside her clients.</p>
+      </div>
+      <ul class="focus-list">
+        <li>
+          <h3>Anxiety &amp; depression</h3>
+          <p class="desc">Understanding the patterns that keep a mind on edge or worn down, and building steadier ground underneath them.</p>
+        </li>
+        <li>
+          <h3>Grief</h3>
+          <p class="desc">Space to move through loss at your own pace, without a timeline imposed from outside.</p>
+        </li>
+        <li>
+          <h3>Relationship issues</h3>
+          <p class="desc">Working through conflict, communication, and connection — with partners, family, or within yourself.</p>
+        </li>
+        <li>
+          <h3>Substance use &amp; addiction</h3>
+          <p class="desc">Compassionate, non-judgmental support for substance use and recovery, from someone who has spent a career in this work.</p>
+        </li>
+        <li>
+          <h3>Co-occurring disorders</h3>
+          <p class="desc">Integrated care when mental health and substance use are intertwined, rather than treated as separate problems.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="equinox-rule">
+
+  <!-- ============ APPROACH ============ -->
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How sessions work</h2>
+      </div>
+      <p>Therapy here starts with listening. Using a client-centered Cognitive Behavioral approach, Lucia helps clients notice the thoughts and patterns driving a difficult moment, and build practical, workable ways through it — at a pace that respects where you are, not where a treatment plan says you should be.</p>
+      <p>Lucia has worked with adolescents and adults across residential, community-based, and office-based outpatient settings, and welcomes clients age fourteen and up. Whatever brought you here, the first conversation is simply that — a conversation.</p>
+    </div>
+  </section>
+
+  <div class="quote">
+    <div class="wrap">
+      <blockquote>
+        “Balance, clarity, well-being.”
+        <cite>— Equinox Mental Health</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- ============ CONTACT / BOOK ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <div class="section-head">
+          <h2>Book an appointment</h2>
+          <p>Reach out and Lucia will get back to you to find a time that works. If you're in crisis, please contact 988 (Suicide &amp; Crisis Lifeline) or 911 rather than waiting for a reply here.</p>
+        </div>
+
+        <ul class="info-list">
+          <li>
+            <span class="label">Email</span>
+            <a href="mailto:lsavagereeder@protonmail.com">lsavagereeder@protonmail.com</a>
+          </li>
+          <li>
+            <span class="label">Address</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=170+Commerce+Way%2C+Portsmouth%2C+NH" target="_blank" rel="noopener">170 Commerce Way, Portsmouth, NH</a>
+          </li>
+          <li>
+            <span class="label">Hours</span>
+            <table class="hours-table">
+              <tr><td>Mon, Tue, Thu</td><td>9am – 6pm</td></tr>
+              <tr><td>Wed, Fri</td><td>9am – 1pm</td></tr>
+              <tr><td>Sat, Sun</td><td>Closed</td></tr>
+            </table>
+          </li>
+          <li>
+            <span class="label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/lucia-savage-reeder-82558843" target="_blank" rel="noopener">Lucia Savage-Reeder</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="book" id="bookForm">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="reason">What brings you in? (optional)</label>
+          <textarea id="reason" name="reason" rows="3" placeholder="A little context helps, but isn't required."></textarea>
+        </div>
+        <button type="submit" class="btn on-ink">Send request</button>
+        <p class="form-note">This opens your email app addressed to Lucia. Nothing is sent automatically from this page.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<hr class="equinox-rule">
+
+<footer class="site">
+  <div class="wrap">
+    <span class="foot-brand">Equinox Mental Health</span>
+    <ul class="foot-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Areas of Focus</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <small>&copy; <span id="year"></span> Equinox Mental Health, Portsmouth, NH. Balance, clarity, well-being.</small>
+  </div>
+</footer>
+
+<script>
+  // Sticky header shadow/border on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Contact form -> mailto fallback (no backend wired up yet)
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = encodeURIComponent(this.name.value);
+    const email = encodeURIComponent(this.email.value);
+    const reason = encodeURIComponent(this.reason.value || 'No additional details provided.');
+    const subject = encodeURIComponent('Appointment request — Equinox Mental Health');
+    const body = `Name: ${decodeURIComponent(name)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${reason}`;
+    window.location.href = `mailto:lsavagereeder@protonmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
