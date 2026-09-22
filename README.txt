@@ -3,6 +3,12 @@ EQUINOX MENTAL HEALTH — WEBSITE
 
 FILES
 - index.html — the entire site (HTML, CSS, and JS in one file, no build step needed).
+- assets/equinox-icon.png — the sun/moon mark cropped from your logo, background removed.
+  Used in the header and as the large hero graphic.
+- assets/equinox-logo.png — the full logo lockup (mark + wordmark + slogan), background
+  removed. Used once, in the footer.
+- assets/favicon.png / assets/apple-touch-icon.png — generated from the icon, for the
+  browser tab and "add to home screen" icon.
 
 ADDING PHOTOS
 Search index.html for "img-slot" — each one is a placeholder box marked with an
@@ -25,6 +31,17 @@ and doesn't guarantee delivery. For something more reliable once this goes
 live, worth wiring the form up to a form backend (e.g. Formspree, Basin) or a
 real booking tool (e.g. Calendly, SimplePractice's client portal) — happy to
 help with that when you're ready.
+
+MOBILE
+On small screens the nav collapses into a full-screen menu, and a "Book an
+appointment" bar stays pinned to the bottom of the screen so it's always one
+tap away — that's the #1 action Lucia wants visitors to take.
+
+CREDIT LINK
+There's a small "Built by Gavin Reeder" bar at the very bottom of the page,
+linking to goalswithgavin.vercel.app. Remove that <div class="credit-bar">...
+</div> block near the end of index.html any time you don't want it there
+(e.g. once you hand the site fully over to the client).
 
 PHONE NUMBER
 Left out on purpose per your note that the business number isn't set up yet.
