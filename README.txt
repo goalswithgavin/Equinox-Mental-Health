@@ -2,13 +2,14 @@ EQUINOX MENTAL HEALTH — WEBSITE
 ================================
 
 FILES
-- index.html — the entire site (HTML, CSS, and JS in one file, no build step needed).
-- assets/equinox-icon.png — the sun/moon mark cropped from your logo, background removed.
-  Used in the header and as the large hero graphic.
-- assets/equinox-logo.png — the full logo lockup (mark + wordmark + slogan), background
-  removed. Used once, in the footer.
-- assets/favicon.png / assets/apple-touch-icon.png — generated from the icon, for the
-  browser tab and "add to home screen" icon.
+- index.html — the entire site, fully self-contained. All images (the Equinox
+  logo mark, the full logo lockup, the favicon, and your "Built by Gavin
+  Reeder" badge) are embedded directly in the file as base64 data, so the
+  page will always display correctly no matter how it's moved, unzipped, or
+  opened — no separate assets folder required.
+- assets/ — the same images as loose PNG files, kept only as originals/backups
+  in case you want to reuse them elsewhere. index.html does not depend on
+  this folder — you can delete it and the site still works.
 
 ADDING PHOTOS
 Search index.html for "img-slot" — each one is a placeholder box marked with an
@@ -39,9 +40,10 @@ tap away — that's the #1 action Lucia wants visitors to take.
 
 CREDIT LINK
 There's a small "Built by Gavin Reeder" bar at the very bottom of the page,
-linking to goalswithgavin.vercel.app. Remove that <div class="credit-bar">...
-</div> block near the end of index.html any time you don't want it there
-(e.g. once you hand the site fully over to the client).
+with your logo badge next to it, linking to goalswithgavin.vercel.app. Remove
+that <div class="credit-bar">...</div> block near the end of index.html any
+time you don't want it there (e.g. once you hand the site fully over to the
+client).
 
 PHONE NUMBER
 Left out on purpose per your note that the business number isn't set up yet.
