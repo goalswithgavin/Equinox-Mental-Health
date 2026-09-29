@@ -11,18 +11,12 @@ FILES
   in case you want to reuse them elsewhere. index.html does not depend on
   this folder — you can delete it and the site still works.
 
-ADDING PHOTOS
-Search index.html for "img-slot" — each one is a placeholder box marked with an
-HTML comment like:
-  <!-- IMAGE: portrait of Lucia Savage-Reeder — replace this div's content
-       with <img src="..." alt="Lucia Savage-Reeder"> -->
-There are two: the hero graphic area (currently an SVG, can stay as-is or be
-swapped) and the About section portrait. Drop your image files next to
-index.html and replace the placeholder div's inner text with an <img> tag,
-e.g.:
-  <div class="img-slot">
-    <img src="lucia-portrait.jpg" alt="Lucia Savage-Reeder">
-  </div>
+PORTRAIT
+Lucia's photo is now in place in the About section, embedded the same way as
+the logos (base64, so it travels with the file). To swap it for a different
+shot later, search index.html for `.img-slot` and replace the `<img>` inside
+it with a new one — the box is cropped to a 4:5 ratio, so a similar
+portrait-orientation photo will drop in most cleanly.
 
 CONTACT FORM
 The "Book an appointment" form currently opens the visitor's email app with a
@@ -46,9 +40,8 @@ time you don't want it there (e.g. once you hand the site fully over to the
 client).
 
 PHONE NUMBER
-Left out on purpose per your note that the business number isn't set up yet.
-Once it exists, add it to the "info-list" in the Contact section and to the
-footer if you'd like it there too.
+(802) 227-4507 is now listed in the Contact section, with a tap-to-call link
+for mobile visitors.
 
 COLORS / FONTS USED
 - Ink black:      #1A1B17
