@@ -20,7 +20,7 @@ portrait-orientation photo will drop in most cleanly.
 
 CONTACT FORM
 The "Book an appointment" form currently opens the visitor's email app with a
-pre-filled message to lsavagereeder@protonmail.com (a mailto: link) — this
+pre-filled message to Lucia@equinoxmentalhealthnh.com (a mailto: link) — this
 works everywhere but relies on the visitor having a configured email client,
 and doesn't guarantee delivery. For something more reliable once this goes
 live, worth wiring the form up to a form backend (e.g. Formspree, Basin) or a
